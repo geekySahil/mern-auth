@@ -35,7 +35,7 @@ mongoose.connect(process.env.MONGODB_URI)
 })
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://mern-auth-mee5.onrender.com'],
+  origin: ['http://localhost:5173', 'https://mern-auth-5a5v.onrender.com'],
   credentials: true
 }))
 
