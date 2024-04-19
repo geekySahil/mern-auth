@@ -25,7 +25,7 @@ function SignUp() {
     e.preventDefault()
       
     try {
-      dispatch( signInStart())
+      // dispatch( signInStart())
       const response = await fetch("http://localhost:3000/api/auth/signup", {
         method: 'POST',
         headers: {
@@ -36,13 +36,14 @@ function SignUp() {
       const data = await response.json()
       console.log(data)
 
-      if(data.statusCode === 200){
-        dispatch(signInSuccess(data))
-      }
+      // if(data.statusCode === 200){
+      //   dispatch(signInSuccess(data))
+      // }
 
-      dispatch(signInFailure(data))
+      // dispatch(signInFailure(data))
     } catch (error) {
-      dispatch(signInFailure(data.message));
+      // dispatch(signInFailure(data.message));
+      console.log(error)
 
     }
 
