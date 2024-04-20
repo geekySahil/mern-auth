@@ -90,7 +90,11 @@ const signIn = async (req, res, next) => {
 
    try {
      res
-         .cookie('access_token', accessToken, { httpOnly: true, sameSite: 'lax', expires: expiryDate })
+         .cookie('access_token', accessToken, { 
+          httpOnly: true, 
+          secure: true,
+          sameSite: 'none',
+          expires: expiryDate })
          .status(200)
          .json(new ApiResponse(200, rest, `${rest.username} logged in successfully`))
    } catch (error) {
@@ -119,7 +123,8 @@ const google = async (req, res, next) => {
             try {
                 res.cookie("access_token", accessToken, {
                     httpOnly: true,
-                    sameSite:'lax',
+                    secure: true,
+                    sameSite:'none',
                     path: '/',
                     expires: expiryDate
                 })
@@ -164,8 +169,8 @@ const google = async (req, res, next) => {
                 res.cookie("access_token", token, {
                     httpOnly: true,
                     secure: true,
-                    sameSite: "lax",
-                    expires: expiryDate
+                    sameSite: "none",
+                    expires: expiryDate, 
                 }).status(200).json(new ApiResponse(200, rest, "Signed up successfully"))
             } catch (error) {
                 console.log(error)
@@ -178,7 +183,7 @@ const google = async (req, res, next) => {
 }
 
 const signout = (req, res, next) => {
-    res.status(200).clearCookie('access_token', {sameSite: 'lax',path: '/'})
+    res.status(200).clearCookie('access_token', {sameSite: 'none',path: '/'})
     res.json(new ApiResponse(200, {}, "Signed Out Successfully"))
 }
 

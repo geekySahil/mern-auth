@@ -19,7 +19,7 @@ const deleteAccount = async (req, res, next) => {
 
         console.log(delResposnse)
         
-        res.clearCookie('access_token', {sameSite: 'lax', path: '/'} )
+        res.clearCookie('access_token', {secure: true, sameSite: 'none', path: '/'} )
 
 
         res.status(201).json(new ApiResponse(201, delResposnse, 'account deleted successfully'))
